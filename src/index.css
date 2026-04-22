@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --color-brand-yellow: #eaff00;
+  --color-deep-charcoal: #121212;
+  --color-matte-black: #1e1e1e;
+  --color-border-subtle: rgba(255, 255, 255, 0.05);
+}
+
+@layer base {
+  body {
+    @apply bg-deep-charcoal text-white font-sans antialiased selection:bg-brand-yellow selection:text-black;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-matte-black/80 backdrop-blur-xl border border-border-subtle rounded-3xl overflow-hidden;
+  }
+  
+  .btn-primary {
+    @apply bg-brand-yellow/10 backdrop-blur-md text-brand-yellow border border-brand-yellow/20 font-semibold px-4 py-2 rounded-xl transition-all duration-200 hover:bg-brand-yellow/20 hover:border-brand-yellow/40 active:scale-95 shadow-[0_0_20px_rgba(234,255,0,0.05)];
+  }
+
+  .btn-secondary {
+    @apply bg-white/5 text-white/70 font-medium px-4 py-2 rounded-xl transition-all duration-200 hover:bg-white/10 hover:text-white;
+  }
+
+  .nav-icon {
+    @apply w-10 h-10 flex items-center justify-center rounded-xl text-white/50 transition-all duration-200 hover:bg-white/5 hover:text-brand-yellow;
+  }
+
+  .nav-icon-active {
+    @apply text-brand-yellow relative;
+  }
+
+  .nav-icon-active::after {
+    content: '';
+    @apply absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-brand-yellow rounded-full;
+  }
+
+  .login-input {
+    @apply w-full bg-transparent border-b border-white/20 py-2 text-sm outline-none focus:border-brand-yellow/50 transition-colors placeholder:text-white/20;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-white/10 rounded-full hover:bg-white/20 transition-all;
+  }
+}
